@@ -69,7 +69,7 @@ $mailer->Port = 465;
 
 // set from, to and carbon copy (hidden)
 $mailer->setFrom('mailman@letsmowe.com', 'Webtal Telecom - MailMan');
-$mailer->addAddress('site@webtal.com', 'Webtal Telecom');
+$mailer->addAddress('site@webtal.com.br', 'Webtal Telecom');
 $mailer->addBCC('joseeduardobarros@gmail.com', 'Eduardo');    // Send to Developer (test)
 $mailer->addBCC('rafael@kabanas.info', 'Rafael');             // Send to Developer (test)
 
