@@ -1,5 +1,6 @@
 <?php
 
+header("Access-Control-Allow-Origin: *");
 header('Content-Type: application/json');
 
 require '../PHPMailer/PHPMailerAutoload.php';
@@ -40,7 +41,7 @@ $mailer = new PHPMailer;
 // set charset
 $mailer->CharSet = 'UTF-8';
 
-$mailer->SMTPDebug = 3;
+//$mailer->SMTPDebug = 3;
 
 // set header
 $mailer->isSMTP();
@@ -53,16 +54,22 @@ $mailer->Port = 465;
 
 // set from, to and carbon copy (hidden)
 $mailer->setFrom('mailman@letsmowe.com', 'Webtal Telecom - MailMan');
-$mailer->addAddress('joseeduardobarros@gmail.com', 'Eduardo');    // Send to Developer (test)
-$mailer->addAddress('rafael@kabanas.info', 'Webtal');
-//$mailer->addAddress($_GET['mail'], $_GET['name']);
-$mailer->addBCC('joseeduardobarros@gmail.com', 'Eduardo Barros');
+$mailer->addAddress('site@webtal.com', 'Webtal Telecom');
+$mailer->addBCC('joseeduardobarros@gmail.com', 'Eduardo');    // Send to Developer (test)
+$mailer->addBCC('rafael@kabanas.info', 'Rafael');             // Send to Developer (test)
 
 // set type, subject and body
 $mailer->isHTML(true);
 $mailer->Subject = 'Requisição de contato - Webtal Telecom';
+
 $mailer->Body = 'Foi realizado um pedido de contato pelo site!.<br/>';
-$mailer->AltBody = 'Foi realizado um pedido de contato pelo site!.<br/>';
+$mailer->Body .= 'Nome: <b>' . $_GET['name'] . '</b><br/>';
+$mailer->Body .= 'Cidade: <b>' . $_GET['city'] . '</b><br/>';
+$mailer->Body .= 'Telefone: <b>' . $_GET['phone'] . '</b><br/>';
+$mailer->Body .= 'Produto de interesse: <b>' . $_GET['product'] . '</b><br/>';
+$mailer->Body .= 'Tipo: <b>' . $_GET['reference'] . '</b><br/>';
+
+$mailer->AltBody = 'Nome: ' . $_GET['name'] . 'Telefone: ' . $_GET['phone'] . 'Produto ' . $_GET['product'] . '(' . ucwords(strtolower($_GET['reference'])) . ')';
 
 // create new instance of response
 $response = new WtalResponse($_GET, $mailer);
