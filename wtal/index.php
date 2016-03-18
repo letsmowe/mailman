@@ -32,15 +32,15 @@ class WtalResponse extends Response {
 
 	/**
 	 * Response constructor.
-	 * @param $post {array}
+	 * @param $get {array}
 	 * @param $mailer {PHPMailer}
 	 * @internal param bool $sent
 	 */
-	public function __construct($post, $mailer)
+	public function __construct($get, $mailer)
 	{
-		$this->mail = $post['mail'];
-        $this->name = $post['name'];
-        $this->phone = $post['phone'];
+		$this->mail = $get['mail'];
+        $this->name = $get['name'];
+        $this->phone = $get['phone'];
         $this->city = $_GET['city'];
         $this->product = $_GET['product'];
         $this->reference = $_GET['reference'];

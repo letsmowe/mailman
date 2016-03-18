@@ -36,19 +36,19 @@ class OaiResponse extends Response {
 
 	/**
 	 * Response constructor.
-	 * @param $post {array}
+	 * @param $get {array}
 	 * @param $mailer {PHPMailer}
 	 * @internal param bool $sent
 	 */
-	public function __construct($post, $mailer)
+	public function __construct($get, $mailer)
 	{
 
-		$this->cName = $post['cName'];
-		$this->cPhone = $post['cPhone'];
-		$this->cEmail = $post['cEmail'];
-		$this->cAddress = $post['cAddress'];
-		$this->cCity = $post['cCity'];
-		$this->cMessage = $post['cMessage'];
+		$this->cName = $get['cName'];
+		$this->cPhone = $get['cPhone'];
+		$this->cEmail = $get['cEmail'];
+		$this->cAddress = $get['cAddress'];
+		$this->cCity = $get['cCity'];
+		$this->cMessage = $get['cMessage'];
 
 		$this->mailer = $mailer;
 
@@ -84,21 +84,20 @@ $mailer->isHTML(true);
 $mailer->Subject = 'Requisição de contato - OAI Telecom';
 
 $mailer->Body = "Foi realizado um pedido de contato pelo site!<br/>";
-$mailer->Body .= "Nome: <b>" . $_POST['cName'] . "</b><br/>";
-$mailer->Body .= "Telefone: <b>" . $_POST['cPhone'] . "</b><br/>";
-$mailer->Body .= "E-mail: <b>" . $_POST['cEmail'] . "</b><br/>";
-$mailer->Body .= "Endereço: <b>" . $_POST['cAddress'] . "</b><br/>";
-$mailer->Body .= "Cidade: <b>" . $_POST['cCity'] . "</b><br/>";
-$mailer->Body .= "Mensagem: <b>" . $_POST['cMessage'] . "</b><br/>";
+$mailer->Body .= "Nome: <b>" . $_GET['cName'] . "</b><br/>";
+$mailer->Body .= "Telefone: <b>" . $_GET['cPhone'] . "</b><br/>";
+$mailer->Body .= "E-mail: <b>" . $_GET['cEmail'] . "</b><br/>";
+$mailer->Body .= "Endereço: <b>" . $_GET['cAddress'] . "</b><br/>";
+$mailer->Body .= "Cidade: <b>" . $_GET['cCity'] . "</b><br/>";
+$mailer->Body .= "Mensagem: <b>" . $_GET['cMessage'] . "</b><br/>";
 
-$mailer->AltBody = 'Nome: ' . $_POST['cName'] . 'Telefone: ' . $_POST['cPhone'] . 'E-mail ' . $_POST['cEmail'] . 'Mensagem ' . $_POST['cMessage'];
+$mailer->AltBody = 'Nome: ' . $_GET['cName'] . 'Telefone: ' . $_GET['cPhone'] . 'E-mail ' . $_GET['cEmail'] . 'Mensagem ' . $_GET['cMessage'];
 
 // create new instance of response
-$response = new OaiResponse($_POST, $mailer);
+$response = new OaiResponse($_GET, $mailer);
 
-if ($_POST['cName']) {
+if ($_GET['cName']) {
 
-//	send
 	if(!$mailer->send()) {
 		$response->setSent(false);
 	} else {

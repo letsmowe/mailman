@@ -14,11 +14,11 @@ class Response {
 
 	/**
 	 * Response constructor.
-	 * @param $post {array}
+	 * @param $get {array}
 	 * @param $mailer {PHPMailer}
 	 * @internal param bool $sent
 	 */
-	public function __construct($post, $mailer)
+	public function __construct($get, $mailer)
 	{
 		$this->mailer = $mailer;
 	}
