@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 require '../PHPMailer/PHPMailerAutoload.php';
 require '../Response.php';
 
-class OaiResponse extends Response {
+class LadorniResponse extends Response {
 
 	public $cName;
 	public $cPhone;
@@ -74,14 +74,14 @@ $mailer->SMTPSecure = 'ssl';
 $mailer->Port = 465;
 
 // set from, to and carbon copy (hidden)
-$mailer->setFrom('mailman@letsmowe.com', 'OAI Telecom - MailMan');
-$mailer->addAddress('site@oai.com.br', 'OAI Telecom');
+$mailer->setFrom('mailman@letsmowe.com', 'La Dorni - MailMan');
+$mailer->addAddress('jonathan@ladorni.com.br', 'La Dorni');
 $mailer->addBCC('joseeduardobarros@gmail.com', 'Eduardo');    // Send to Developer (test)
 $mailer->addBCC('rafael@kabanas.info', 'Rafael');             // Send to Developer (test)
 
 // set type, subject and body
 $mailer->isHTML(true);
-$mailer->Subject = 'Requisição de contato - OAI Telecom';
+$mailer->Subject = 'Requisição de contato - La Dorni';
 
 $mailer->Body = "Foi realizado um pedido de contato pelo site!<br/>";
 $mailer->Body .= "Nome: <b>" . $_GET['cName'] . "</b><br/>";
