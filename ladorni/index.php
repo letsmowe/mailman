@@ -66,7 +66,7 @@ $mailer->CharSet = 'UTF-8';
 
 // set header
 $mailer->isSMTP();
-$mailer->Host = 'box729.bluehost.com';
+$mailer->Host = 'server.noibe.com';
 $mailer->SMTPAuth = true;
 $mailer->Username = 'mailman@letsmowe.com';
 $mailer->Password = '64op3gZxONGO';

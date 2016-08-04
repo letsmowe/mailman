@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 require '../PHPMailer/PHPMailerAutoload.php';
 require '../Response.php';
 
-class OaiResponse extends Response {
+class CitodonResponse extends Response {
 
 	public $cName;
 	public $cPhone;
@@ -74,14 +74,13 @@ $mailer->SMTPSecure = 'ssl';
 $mailer->Port = 465;
 
 // set from, to and carbon copy (hidden)
-$mailer->setFrom('mailman@letsmowe.com', 'OAI Telecom - MailMan');
-$mailer->addAddress('site@oai.com.br', 'OAI Telecom');
+$mailer->setFrom('mailman@letsmowe.com', 'Citodon - MailMan');
 $mailer->addBCC('joseeduardobarros@gmail.com', 'Eduardo');    // Send to Developer (test)
-$mailer->addBCC('rafael@kabanas.info', 'Rafael');             // Send to Developer (test)
+$mailer->addBCC('cristiano@elbit.com.br', 'Cristiano');             // Send to Developer (test)
 
 // set type, subject and body
 $mailer->isHTML(true);
-$mailer->Subject = 'Requisição de contato - OAI Telecom';
+$mailer->Subject = 'Requisição de contato - Citodon';
 
 $mailer->Body = "Foi realizado um pedido de contato pelo site!<br/>";
 $mailer->Body .= "Nome: <b>" . $_GET['cName'] . "</b><br/>";
@@ -94,7 +93,7 @@ $mailer->Body .= "Mensagem: <b>" . $_GET['cMessage'] . "</b><br/>";
 $mailer->AltBody = 'Nome: ' . $_GET['cName'] . 'Telefone: ' . $_GET['cPhone'] . 'E-mail ' . $_GET['cEmail'] . 'Mensagem ' . $_GET['cMessage'];
 
 // create new instance of response
-$response = new OaiResponse($_GET, $mailer);
+$response = new CitodonResponse($_GET, $mailer);
 
 if ($_GET['cName']) {
 
