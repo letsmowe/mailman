@@ -75,8 +75,8 @@ $mailer->Port = 465;
 
 // set from, to and carbon copy (hidden)
 $mailer->setFrom('mailman@letsmowe.com', 'Citodon - MailMan');
-$mailer->addBCC('joseeduardobarros@gmail.com', 'Eduardo');    // Send to Developer (test)
-$mailer->addBCC('cristiano@elbit.com.br', 'Cristiano');             // Send to Developer (test)
+$mailer->addAddress('joseeduardobarros@gmail.com', 'Eduardo');    // Send to Developer (test)
+$mailer->addAddress('cristiano@elbit.com.br', 'Cristiano');       // Send to Developer (test)
 
 // set type, subject and body
 $mailer->isHTML(true);
